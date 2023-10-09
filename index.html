@@ -29,22 +29,24 @@
                     <h2 class="mb-3">Search for a City:</h2>
                     <form id="city-form">
                         <input type="text" class="w-100" id="city-input" name="city-input" placeholder="San Diego">
-                        <button type="submit" class="btn btn-primary w-100 my-3">Search</button>
+                        <button type="submit" class="btn btn-primary w-100 my-3" id="submit-btn">Search</button>
                     </form>
                     <hr class="my-0">
                     <!-- TODO: add search history list here (populated dynamically) -->
-                    <ul id="city-list"></ul>
+                    <ul id="city-list" class="p-0"></ul>
                     <!-- <button type="button" class="btn btn-primary w-100 mb-3">City 1</button>
                     <button type="button" class="btn btn-primary w-100 mb-3">City 2</button> -->
                 </div>
 
                 <div class="col-12 col-md-8 col-lg-9">
-                    <h3>Sidebar Content</h3>
-                    <ul>
-                        <li>Spans 3 / 12 columns on large screens</li>
-                        <li>Spans 4 / 12 columns on medium screens</li>
-                        <li>Spans 12 / 12 (full-width) on smaller screens</li>
-                    </ul>
+                    <!-- Today's weather (dynamically populated) -->
+                    <div>
+                        <h2>Todays weather</h2>
+                    </div>
+                    <!-- 5-Day Forecaset (dynamically populated) -->
+                    <div>
+                        <h2>5-Day Forecast:</h2>
+                    </div>
                 </div>
             </div>
         </section>
@@ -60,6 +62,16 @@
     <!-- day js -->
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
         integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
+    <!-- Link to dayjs timezone and UTC plugins -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/dayjs.min.js"
+        integrity="sha512-0fcCRl828lBlrSCa8QJY51mtNqTcHxabaXVLPgw/jPA5Nutujh6CbTdDgRzl9aSPYW/uuE7c4SffFUQFBAy6lg=="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/plugin/utc.min.js"
+        integrity="sha512-m00bfmYnAl3plEBlQfeQUhw/U2uvmw29V2+jxSWpAjankMWS+zAsjezbKWDEJNXqWq9o9qQZSOiA2RKDpa4D5w=="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/plugin/timezone.min.js"
+        integrity="sha512-pslqxxHAYPCxaSeFSmXXxDkLejD5dbFVC66aiVq0z4v7VTJBU+wqcG1OpNh4p3MjS2D6NCwz/H2QmSc7dXxryg=="
+        crossorigin="anonymous"></script>
     <!-- bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
