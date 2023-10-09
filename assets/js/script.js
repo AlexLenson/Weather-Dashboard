@@ -24,6 +24,7 @@ $(function () {
         event.preventDefault();
         var inputText = cityInput.val().trim();
         console.log(inputText);
+        // if the input text is not blank and is not already in the searchHistory array
         if (inputText != "" && searchHistory.indexOf(inputText) === -1) {
             // Creates new button
             var button = $("<button>", {
@@ -34,8 +35,11 @@ $(function () {
             });
             cityList.prepend(button);
             searchHistory.push(inputText);
+            // save to local storage
+            localStorage.setItem("cities", JSON.stringify(searchHistory));
         }
         cityInput.val("");
+
     }
 
 
