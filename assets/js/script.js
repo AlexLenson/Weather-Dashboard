@@ -9,13 +9,13 @@ $(function () {
     var cityName;
     var inputText;
     var lat, lon;
-
+    var today = dayjs();
 
     // API endpoints
     // var geocodeUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&limit=5&appid=" + apiKey;
     // var geocodeUrl = "http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}";
     // var currentWeatherUrl = "https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}";
-    var forecastUrl = "api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}";
+    // var forecastUrl = "api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}";
     var apiKey = "93c5997f1683b54331b6cb9a90e8dbca";
 
     // DOM Elements
@@ -42,6 +42,11 @@ $(function () {
             searchHistory.push(inputText);
             // save to local storage
             localStorage.setItem("cities", JSON.stringify(searchHistory));
+            // create current weather h2 -------- this should be in a separate function?
+            var h2 = $("<h2>").text(inputText.charAt(0).toUpperCase() + inputText.slice(1) + " (" + today.format('DD/MM/YYYY') + ")");
+            $("#current-weather").addClass("border border-dark mt-3");
+            $("#current-weather").append(h2);
+
             fetchGeocode();
         }
         cityInput.val("");
@@ -83,10 +88,13 @@ $(function () {
                 return response.json();
             })
             .then(function (data) {
-                // console.log(data);
+                console.log(data);
                 temp = data.main.temp;
                 wind = data.wind.speed;
                 humidity = data.main.humidity;
+                // how do i get icon to appear??
+                icon = data.weather[0].icon;
+                console.log(icon);
                 // console.log(temp);
                 // console.log(wind);
                 // console.log(humidity);
