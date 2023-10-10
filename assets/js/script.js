@@ -77,17 +77,19 @@ $(function () {
     }
 
     function fetchCurrentWeather() {
-        var currentWeatherUrl = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey;
+        var currentWeatherUrl = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=imperial" + "&appid=" + apiKey;
         fetch(currentWeatherUrl)
             .then(function (response) {
                 return response.json();
             })
             .then(function (data) {
                 console.log(data);
-                // lat = data[0].lat;
-                // lon = data[0].lon;
-                // console.log(lat);
-                // console.log(lon);
+                temp = data.main.temp;
+                wind = data.wind.speed;
+                humidity = data.main.humidity;
+                console.log(temp);
+                console.log(wind);
+                console.log(humidity);
                 // fetchCurrentWeather();
             });
     }
