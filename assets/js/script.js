@@ -15,7 +15,7 @@ $(function () {
     // var geocodeUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&limit=5&appid=" + apiKey;
     // var geocodeUrl = "http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}";
     // var currentWeatherUrl = "https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}";
-    var forecast5Url = "api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}";
+    var forecastUrl = "api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}";
     var apiKey = "93c5997f1683b54331b6cb9a90e8dbca";
 
     // DOM Elements
@@ -70,8 +70,8 @@ $(function () {
                 // console.log(data);
                 lat = data[0].lat;
                 lon = data[0].lon;
-                console.log(lat);
-                console.log(lon);
+                // console.log(lat);
+                // console.log(lon);
                 fetchCurrentWeather();
             });
     }
@@ -83,14 +83,32 @@ $(function () {
                 return response.json();
             })
             .then(function (data) {
-                console.log(data);
+                // console.log(data);
                 temp = data.main.temp;
                 wind = data.wind.speed;
                 humidity = data.main.humidity;
-                console.log(temp);
-                console.log(wind);
-                console.log(humidity);
-                // fetchCurrentWeather();
+                // console.log(temp);
+                // console.log(wind);
+                // console.log(humidity);
+                fetchForecast();
+            });
+    }
+
+    function fetchForecast() {
+        var forecastUrl = "api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&units=imperial" + "&appid=" + apiKey;
+        console.log(forecastUrl);
+        fetch(forecastUrl)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                console.log(data);
+                // temp = data.main.temp;
+                // wind = data.wind.speed;
+                // humidity = data.main.humidity;
+                // console.log(temp);
+                // console.log(wind);
+                // console.log(humidity);
             });
     }
 
