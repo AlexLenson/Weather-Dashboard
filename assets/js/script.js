@@ -141,7 +141,7 @@ $(function () {
         <div class="card-body">
         <p>Temperature: ${data.main.temp} F</p>
         <p>Humidity: ${data.main.humidity} %</p>
-        <p>Wind Speed: ${data.wind.speed}</p>
+        <p>Wind Speed: ${data.wind.speed} MPH</p>
         </div>
         </div>`;
 
