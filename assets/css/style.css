@@ -1,0 +1,15 @@
+
+#forecast{
+    display:flex;
+    justify-content: center;
+    gap:3vw;
+}
+
+.forecast-card{
+    width:30vw;
+    margin-top: 4vh;
+}
+
+#text{
+    display:none;
+}
