@@ -2,14 +2,14 @@
 #forecast{
     display:flex;
     justify-content: center;
-    gap:3vw;
+    gap:1vw;
 }
 
 .forecast-card{
-    width:30vw;
+    width:10vw;
     margin-top: 4vh;
 }
 
 #text{
-    display:none;
+    display: none;
 }

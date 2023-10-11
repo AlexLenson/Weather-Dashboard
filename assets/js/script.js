@@ -155,7 +155,7 @@ $(function () {
       var forIn = i * 8 + 4;
       var day = new Date(data[forIn].dt * 1000).toDateString();
 
-      output += `<div class ="card forecast-card">
+      output = `<div class ="card forecast-card">
         <div class= "card-header">
         <h5>${day}<span><img src="https://openweathermap.org/img/wn/${data[forIn].weather[0].icon}.png"/></span></h5>
         </div>
@@ -165,8 +165,8 @@ $(function () {
         <p>Wind Speed: ${data[forIn].wind.speed}</p>
         </div>
         </div>`;
+        $("#forecast").append(output);
     }
-    $("#forecast").append(output);
   }
 
   // Event listeners
