@@ -24,19 +24,18 @@ $(function () {
 
   searchHistory = JSON.parse(localStorage.getItem("cities")) || [];
   for (let i = 0; i < searchHistory.length; i++) {
-    createButton(searchHistory[i])
-    
+    createButton(searchHistory[i]);
   }
 
-    function createButton(city){
-        var button = $("<button>", {
-          type: "button",
-          class: "btn btn-secondary w-100 mt-3",
-          id: city,
-          text: city,
-        });
-        cityList.prepend(button);
-    }
+  function createButton(city) {
+    var button = $("<button>", {
+      type: "button",
+      class: "btn btn-secondary w-100 mt-3",
+      id: city,
+      text: city,
+    });
+    cityList.prepend(button);
+  }
   // Display search history to page and push to searchHistory array
   function displayCity(event) {
     event.preventDefault();
@@ -44,9 +43,9 @@ $(function () {
     // console.log(inputText);
     // if the input text is not blank and is not already in the searchHistory array
     if (inputText != "" && searchHistory.indexOf(inputText) === -1) {
-        searchHistory= JSON.parse(localStorage.getItem("cities")) || []
+      searchHistory = JSON.parse(localStorage.getItem("cities")) || [];
       // Creates new button
-      createButton(inputText)
+      createButton(inputText);
       searchHistory.push(inputText);
       // save to local storage
       localStorage.setItem("cities", JSON.stringify(searchHistory));
@@ -132,7 +131,7 @@ $(function () {
 
   function displayWeather(data) {
     console.log(data);
-    $("#current-weather").empty()
+    $("#current-weather").empty();
     var output;
 
     output = `<div class ="card">
@@ -144,22 +143,19 @@ $(function () {
         <p>Humidity: ${data.main.humidity} %</p>
         <p>Wind Speed: ${data.wind.speed}</p>
         </div>
-</div>`;
+        </div>`;
 
     $("#current-weather").append(output);
   }
- 
-  function displayForecast(data) {
 
-     $("#forecast").empty()
-     var output;
+  function displayForecast(data) {
+    $("#forecast").empty();
+    var output;
     for (let i = 0; i < 5; i++) {
       var forIn = i * 8 + 4;
       var day = new Date(data[forIn].dt * 1000).toDateString();
 
-     
-
-      output +=`<div class ="card forecast-card">
+      output += `<div class ="card forecast-card">
         <div class= "card-header">
         <h5>${day}<span><img src="https://openweathermap.org/img/wn/${data[forIn].weather[0].icon}.png"/></span></h5>
         </div>
@@ -168,7 +164,7 @@ $(function () {
         <p>Humidity: ${data[forIn].main.humidity} %</p>
         <p>Wind Speed: ${data[forIn].wind.speed}</p>
         </div>
-</div>`;
+        </div>`;
     }
     $("#forecast").append(output);
   }
@@ -176,9 +172,9 @@ $(function () {
   // Event listeners
   cityForm.on("submit", displayCity);
 
-  cityList.on("click", function(event){
-   var city =event.target.textContent
-   console.log(city);
-   fetchCurrentWeather(city)
-  })
+  cityList.on("click", function (event) {
+    var city = event.target.textContent;
+    console.log(city);
+    fetchCurrentWeather(city);
+  });
 });
